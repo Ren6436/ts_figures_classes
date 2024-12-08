@@ -9,11 +9,17 @@ export class Triangle implements Figure {
 
   color: 'red' | 'green' | 'blue';
 
+  a: number;
+
+  b: number;
+
+  c: number;
+
   constructor(
     color: 'red' | 'green' | 'blue',
-    public a: number,
-    public b: number,
-    public c: number,
+    a: number,
+    b: number,
+    c: number,
   ) {
     if (a <= 0 || b <= 0 || c <= 0) {
       throw new Error('Side lengths must be greater than zero');
@@ -28,6 +34,9 @@ export class Triangle implements Figure {
     }
 
     this.color = color;
+    this.a = a;
+    this.b = b;
+    this.c = c;
   }
 
   getArea(): number {
@@ -44,15 +53,15 @@ export class Circle implements Figure {
 
   color: 'red' | 'green' | 'blue';
 
-  constructor(
-    color: 'red' | 'green' | 'blue',
-    public radius: number,
-  ) {
+  radius: number;
+
+  constructor(color: 'red' | 'green' | 'blue', radius: number) {
     if (radius <= 0) {
       throw new Error('Radius must be greater than zero');
     }
 
     this.color = color;
+    this.radius = radius;
   }
 
   getArea(): number {
@@ -67,20 +76,24 @@ export class Rectangle implements Figure {
 
   color: 'red' | 'green' | 'blue';
 
-  constructor(
-    color: 'red' | 'green' | 'blue',
-    public width: number,
-    public height: number,
-  ) {
+  width: number;
+
+  height: number;
+
+  constructor(color: 'red' | 'green' | 'blue', width: number, height: number) {
     if (width <= 0 || height <= 0) {
       throw new Error('Width and height must be greater than zero');
     }
 
     this.color = color;
+    this.width = width;
+    this.height = height;
   }
 
   getArea(): number {
-    return this.width * this.height;
+    const area = this.width * this.height;
+
+    return Math.floor(area * 100) / 100;
   }
 }
 
